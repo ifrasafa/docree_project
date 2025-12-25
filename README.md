@@ -1,3 +1,4 @@
+
 # Docere - Academic Classroom Management System
 
 Docere is a web-based application designed for teachers to manage classroom activities efficiently. It includes features for attendance tracking, work submission monitoring, and parent-teacher communication.
@@ -152,3 +153,4 @@ Common issues:
 ## License
 
 This project is open source and available for educational use.
+>>>>>>> aff51497ba902a551aef5b49d53f03e5dd5623e9

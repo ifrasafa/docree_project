@@ -1,3 +1,4 @@
+
 /**
  * Firebase Configuration and Initialization
  * 
@@ -65,4 +66,5 @@ window.auth = auth;
  *   }
  * }
  */
+
 

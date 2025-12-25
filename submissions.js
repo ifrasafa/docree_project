@@ -1,3 +1,4 @@
+
 /**
  * Submissions, Deadlines, Notices, and Parent Messages Module
  * 
@@ -480,4 +481,5 @@ window.submissionsModule = {
   updateClassInfo,
   watchClassInfo
 };
+
 

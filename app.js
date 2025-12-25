@@ -1,3 +1,4 @@
+
 /**
  * Main Application Logic - Refactored to use Firebase Firestore
  * 
