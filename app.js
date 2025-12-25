@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function(){
   let deadline = "";
   let attendanceActive = false;
   let timerInterval;
+  let parentMessages = [];
 
   const roleBox = document.getElementById("roleBox");
   const teacherBox = document.getElementById("teacherBox");
@@ -77,12 +78,12 @@ document.addEventListener("DOMContentLoaded", function(){
   function startAttendanceTimer(seconds){
     attendanceActive = true;
     let timeLeft = seconds;
-    timerDisplay.innerText = `Attendance Open: ${timeLeft}s`;
+    timerDisplay.innerHTML = `<span class="badge badge-success">Attendance Open: ${timeLeft}s</span>`;
     attendanceBtn.disabled = true;
 
     timerInterval = setInterval(() => {
       timeLeft--;
-      timerDisplay.innerText = `Attendance Open: ${timeLeft}s`;
+      timerDisplay.innerHTML = `<span class="badge badge-success">Attendance Open: ${timeLeft}s</span>`;
       if(timeLeft <= 0){
         stopAttendanceTimer();
       }
@@ -92,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function(){
   function stopAttendanceTimer(){
     attendanceActive = false;
     clearInterval(timerInterval);
-    timerDisplay.innerText = "Attendance Closed";
+    timerDisplay.innerHTML = `<span class="badge badge-danger">Attendance Closed</span>`;
     attendanceBtn.disabled = false;
   }
 
@@ -146,6 +147,24 @@ document.addEventListener("DOMContentLoaded", function(){
     alert("Reply sent to parents");
   });
 
+  // SEND REMINDER
+  document.getElementById("btnSendReminder").addEventListener("click", function(){
+    alert("Reminder sent to students who haven't submitted!");
+  });
+
+  // SEND PARENT MESSAGE
+  document.getElementById("btnSendMessage").addEventListener("click", function(){
+    let message = document.getElementById("parentMessage").value.trim();
+    if(message){
+      parentMessages.push(message);
+      updateParentMessages();
+      document.getElementById("parentMessage").value = "";
+      alert("Message sent to teacher!");
+    } else {
+      alert("Please enter a message.");
+    }
+  });
+
   // UPDATE ATTENDANCE IN TEACHER & PARENT
   function updateAttendance(){
     let totalStudents = Number(strength.value || 0);
@@ -156,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function(){
     presentList.innerHTML = "";
     presentStudents.forEach(name => {
       let li = document.createElement("li");
-      li.innerText = name;
+      li.innerHTML = `<span class="badge badge-success">${name}</span>`;
       presentList.appendChild(li);
     });
 
@@ -169,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function(){
     parentPresentList.innerHTML = "";
     presentStudents.forEach(name => {
       let li = document.createElement("li");
-      li.innerText = name;
+      li.innerHTML = `<span class="badge badge-success">${name}</span>`;
       parentPresentList.appendChild(li);
     });
   }
@@ -183,9 +202,18 @@ document.addEventListener("DOMContentLoaded", function(){
     presentList.innerHTML = "";
     presentStudents.forEach(name => {
       let li = document.createElement("li");
-      li.innerText = `${name} - ${submittedStudents.includes(name) ? "Submitted" : "Not Submitted"}`;
+      let status = submittedStudents.includes(name) ? 
+        '<span class="badge badge-success">Submitted</span>' : 
+        '<span class="badge badge-danger">Not Submitted</span>';
+      li.innerHTML = `${name} - ${status}`;
       presentList.appendChild(li);
     });
+  }
+
+  // UPDATE PARENT MESSAGES
+  function updateParentMessages(){
+    let msgStr = parentMessages.length ? parentMessages.map(msg => `<p class="mb-1 bg-blue-50 p-2 rounded">${msg}</p>`).join("") : "No messages";
+    document.getElementById("teacherMessages").innerHTML = msgStr;
   }
 
 });
