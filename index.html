@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DOCERE – Academic Management</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>DOCERE</h1>
+<p class="subtitle">Academic Classroom Management System</p>
+
+<!-- ROLE SELECTION -->
+<div class="box" id="roleBox">
+  <button id="btnTeacher">Teacher</button>
+  <button id="btnStudent">Student</button>
+  <button id="btnParent">Parent</button>
+</div>
+
+<!-- TEACHER PORTAL -->
+<div class="box hidden" id="teacherBox">
+  <h2>Teacher Portal</h2>
+  <button class="backBtn">Back</button>
+
+  <input id="className" placeholder="Enter Class (e.g. 10-A)">
+  <input type="number" id="strength" placeholder="Class Strength">
+
+  <h3>Attendance</h3>
+  <button id="attendanceBtn">Start Attendance (20 sec)</button>
+  <p id="timerDisplay"></p>
+  <p>Total Students: <span id="total">0</span></p>
+  <p>Present: <span id="present">0</span></p>
+  <p>Absent: <span id="absent">0</span></p>
+  <ul id="presentList"></ul>
+
+  <h3>Submission</h3>
+  <input type="date" id="deadline">
+  <button id="btnSetDeadline">Set Deadline</button>
+  <p>Submitted: <span id="submitted">0</span></p>
+  <p>Not Submitted: <span id="notSubmitted">0</span></p>
+
+  <h3>Notice</h3>
+  <textarea id="noticeText" placeholder="Type notice here"></textarea>
+  <button id="btnPostNotice">Post Notice</button>
+
+  <h3>Reply to Parents</h3>
+  <textarea id="replyText" placeholder="Reply to parents"></textarea>
+  <button id="btnSendReply">Send Reply</button>
+</div>
+
+<!-- STUDENT PORTAL -->
+<div class="box hidden" id="studentBox">
+  <h2>Student Portal</h2>
+  <button class="backBtn">Back</button>
+
+  <input id="studentName" placeholder="Enter Your Name">
+  <button id="btnMarkSelfPresent">Mark Attendance</button>
+  <button id="btnSubmitWork">Submit Work</button>
+
+  <p><b>Submission Deadline:</b> <span id="studentDeadline">Not Set</span></p>
+  <p><b>Notice:</b> <span id="studentNotice">No notice</span></p>
+</div>
+
+<!-- PARENT PORTAL -->
+<div class="box hidden" id="parentBox">
+  <h2>Parent Portal</h2>
+  <button class="backBtn">Back</button>
+
+  <input id="childName" placeholder="Enter Child Name">
+
+  <p><b>Class:</b> <span id="parentClass">-</span></p>
+  <p>Total Students: <span id="pTotal">0</span></p>
+  <p>Present: <span id="pPresent">0</span></p>
+  <p>Absent: <span id="pAbsent">0</span></p>
+  <ul id="parentPresentList"></ul>
+
+  <p><b>Teacher Reply:</b> <span id="parentReply">No reply</span></p>
+  <p><b>Notice:</b> <span id="parentNotice">No notice</span></p>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
