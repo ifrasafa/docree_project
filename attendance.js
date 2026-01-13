@@ -19,9 +19,9 @@ let attendanceTimerInterval = null;
 /**
  * Opens an attendance session for the specified duration
  * Requires teacher role
- * @param {number} durationSeconds - Duration in seconds (default: 120 = 2 minutes)
+ * @param {number} durationSeconds - Duration in seconds (default: 30 = 30 seconds)
  */
-async function openAttendance(durationSeconds = 120) {
+async function openAttendance(durationSeconds = 30) {
   // Check authentication
   const user = window.auth && window.auth.currentUser;
   if (!user) {

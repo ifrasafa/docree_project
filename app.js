@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // ========== ATTENDANCE ==========
   attendanceBtn.addEventListener("click", async () => {
     attendanceBtn.disabled = true;
-    await window.attendanceModule.openAttendance(120);
+    await window.attendanceModule.openAttendance(30);
     // Button will be re-enabled by the status listener
   });
 
